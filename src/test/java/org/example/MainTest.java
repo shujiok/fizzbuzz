@@ -9,29 +9,37 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class MainTest {
+
     @Test
     void printsGitHubForNumbersContainingSeven() {
-        List<String> lines = runMain();
-
-        assertEquals(100, lines.size());
-        assertEquals(List.of("fizz", "GitHub", "8"), lines.subList(6, 9));
-        assertEquals(List.of("16", "GitHub", "fizz"), lines.subList(16, 19));
-        assertEquals(List.of("26", "GitHub", "28"), lines.subList(26, 29));
-        assertEquals(List.of("fizz", "GitHub", "GitHub"), lines.subList(69, 72));
-        assertEquals("GitHub", lines.get(75));
+        assertEquals("GitHub", Main.calculate(17));
+        assertEquals("GitHub", Main.calculate(27));
+        assertEquals("GitHub", Main.calculate(75));
+        assertEquals("GitHub", Main.calculate(77));
     }
 
-    private List<String> runMain() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-
-        try {
-            System.setOut(new PrintStream(output, true, StandardCharsets.UTF_8));
-            Main.main(new String[0]);
-        } finally {
-            System.setOut(originalOut);
-        }
-
-        return output.toString(StandardCharsets.UTF_8).lines().toList();
+    @Test
+    void printsFizzForNumbersMultipleThree(){
+        assertEquals("fizz", Main.calculate(3));
+        assertEquals("fizz", Main.calculate(18));
     }
+
+    @Test
+    void printsBuzzForNumbersMultipleFive(){
+        assertEquals("buzz", Main.calculate(5));
+        assertEquals("buzz", Main.calculate(40));
+    }
+
+    @Test
+    void printsFizzBuzzForNumbersMultipleThreeAndFive(){
+        assertEquals("fizzbuzz", Main.calculate(15));
+        assertEquals("fizzbuzz", Main.calculate(45));
+    }
+
+    @Test
+    void printsNumberForNumbersNoneMatch(){
+        assertEquals("4", Main.calculate(4));
+        assertEquals("98", Main.calculate(98));
+    }
+
 }
