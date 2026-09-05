@@ -16,7 +16,9 @@ class MainTest {
         assertEquals(100, lines.size());
         assertEquals(List.of("fizz", "GitHub", "8"), lines.subList(6, 9));
         assertEquals(List.of("16", "GitHub", "fizz"), lines.subList(16, 19));
-        assertEquals(List.of("fizz", "GitHub", "68"), lines.subList(66, 69));
+        assertEquals(List.of("26", "GitHub", "28"), lines.subList(26, 29));
+        assertEquals(List.of("fizz", "GitHub", "GitHub"), lines.subList(69, 72));
+        assertEquals("GitHub", lines.get(75));
     }
 
     private List<String> runMain() {
