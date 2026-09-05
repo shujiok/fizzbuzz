@@ -14,9 +14,9 @@ class MainTest {
         List<String> lines = runMain();
 
         assertEquals(100, lines.size());
-        assertOutputForNumber(lines, 7, "GitHub");
-        assertOutputForNumber(lines, 17, "GitHub");
-        assertOutputForNumber(lines, 67, "GitHub");
+        assertEquals(List.of("fizz", "GitHub", "8"), lines.subList(6, 9));
+        assertEquals(List.of("16", "GitHub", "fizz"), lines.subList(16, 19));
+        assertEquals(List.of("fizz", "GitHub", "68"), lines.subList(66, 69));
     }
 
     private List<String> runMain() {
@@ -31,9 +31,5 @@ class MainTest {
         }
 
         return output.toString(StandardCharsets.UTF_8).lines().toList();
-    }
-
-    private void assertOutputForNumber(List<String> lines, int number, String expected) {
-        assertEquals(expected, lines.get(number));
     }
 }
