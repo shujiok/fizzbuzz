@@ -13,9 +13,10 @@ class MainTest {
     void printsGitHubForNumbersContainingSeven() {
         List<String> lines = runMain();
 
-        assertEquals("GitHub", lines.get(7));
-        assertEquals("GitHub", lines.get(17));
-        assertEquals("GitHub", lines.get(67));
+        assertEquals(100, lines.size());
+        assertOutputForNumber(lines, 7, "GitHub");
+        assertOutputForNumber(lines, 17, "GitHub");
+        assertOutputForNumber(lines, 67, "GitHub");
     }
 
     private List<String> runMain() {
@@ -30,5 +31,9 @@ class MainTest {
         }
 
         return output.toString(StandardCharsets.UTF_8).lines().toList();
+    }
+
+    private void assertOutputForNumber(List<String> lines, int number, String expected) {
+        assertEquals(expected, lines.get(number));
     }
 }
