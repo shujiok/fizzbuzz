@@ -9,6 +9,8 @@ public class Main {
                 System.out.println("fizz");
             } else if (i % 5 == 0) {
                 System.out.println("buzz");
+            } else if (String.valueOf(i).contains("7")) {
+                System.out.println("GitHub");
             } else {
                 System.out.println(i);
             }
